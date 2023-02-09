@@ -1,23 +1,54 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
 
 function App() {
+  const [Hole, setHole] = useState(10);
+  const [Veri, setVeri] = useState(10);
+  const [Blur, setBlur] = useState(10);
+  
+
+  
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+      <div className="controls">
+        <label>Horizontal length</label>
+        <input
+          type="range"
+          min="-100"
+          max="100"
+          value={Hole}
+          onChange={(e) => setHole(e.target.value)}
+        />
+
+        <label>Vertical length</label>
+        <input
+          type="range"
+          min="-100"
+          max="100"
+          value={Veri}
+          onChange={(e) => setVeri(e.target.value)}
+        />
+
+        <label>Blur</label>
+        <input
+          type="range"
+          min="0"
+          max="200"
+          value={Blur}
+          onChange={(e) => setBlur(e.target.value)}
+        />
+    
+      
+      </div>
+      <div className="output">
+        <div
+          className="box"
+          style={{ boxShadow: `  ${Hole}px ${Veri}px ${Blur}px black` }}
+        ></div>
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          box-shadow:{Hole}px {Veri}px {Blur}px
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      </div>
     </div>
   );
 }
